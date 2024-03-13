@@ -1,0 +1,14 @@
+.body {
+    background-color: blue;
+    background-image: linear-gradient(to bottom right, rgb(40, 40, 241), rgb(68, 212, 238));
+    opacity: 0.8;
+    overflow: hidden;
+}
+
+.main {
+    width: 40vw;
+    height: 90vh;
+    margin: 4vh auto;
+    border-radius: 20px;
+    background-color: white;
+}
