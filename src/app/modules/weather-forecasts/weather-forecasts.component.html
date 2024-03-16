@@ -1,8 +1,44 @@
 <div class="body">
     <div class="main">
-        <div class="search"></div>
-        <div class="waether-forecasts">
-            
+        <div class="search">
+           <div>
+                <form [formGroup]="formGroup" role="form" (ngSubmit)="enter()">
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input type="text" pInputText formControlName="search"/>
+                    </span>
+                </form>
+           </div>
+        </div>
+        <div *ngIf='!name.includes("404")' class="waether-forecasts">
+            <div class="current-weather">
+                <p class="current-weather--f1">{{name}}</p>
+                <p class="current-weather--f2">{{weatherForecasts?.main?.temp | number: '1.0-0'}}°</p>
+                <p class="current-weather--f3">{{weatherForecasts?.weather?.[0]?.description ?? 'normal'}}</p>
+                <p class="current-weather--f3">Max: {{weatherForecasts?.main?.temp_max | number: '1.0-0'}}°  Min: {{weatherForecasts?.main?.temp_min | number: '1.0-0'}}°</p>
+            </div>
+            <div class="weather-info">
+                <p><i class="fas fa-wind"></i> Wind</p>
+                <p class="weather-info--sub">{{weatherForecasts?.wind?.speed ?? 0}} km/h</p>
+            </div>
+            <div class="weather-info">
+                <p><i class="fas fa-thermometer-full"></i> Feels like</p>
+                <p class="weather-info--sub">{{weatherForecasts?.main?.feels_like ?? 0 | number: '1.0-0'}}°</p>
+            </div>
+            <div class="weather-info">
+                <p><i class="fas fa-water"></i> Humidity</p>
+                <p class="weather-info--sub">{{weatherForecasts?.main?.humidity ?? 0}}°</p>
+            </div>
+            <div class="weather-info">
+                <p><i class="fas fa-clock"></i> Pressure</p>
+                <p class="weather-info--sub">{{weatherForecasts?.main?.pressure ?? 0}} hPA</p>
+            </div>
+        </div>
+        <div *ngIf='name.includes("404")' class="waether-forecasts">
+            <div class="current-weather">
+                <p class="current-weather--f1">Not found</p>
+                <p class="current-weather--f2">{{name}}</p>
+            </div>
         </div>
     </div>
 </div>

@@ -8,10 +8,11 @@ export class WeatherForecastService {
     }
     
     public getCurrentWeatherForecast (lat: any, lon: any) {
-        const params = new HttpParams();
-        params.set("appid", Constant.API_KEY_WEATHER_FORECAST);
-        params.set("lat", lat);
-        params.set("lon", lon);
-        return this.httpClient.get<any>(Constant.PATH, {params, observe : "response"});
+        let params = new HttpParams()
+         .set("appid", Constant.API_KEY_WEATHER_FORECAST)
+         .set("lat", lat)
+         .set("lon", lon)
+         .set("units", "metric");
+        return this.httpClient.get<any>(Constant.PATH_WEATHER_FORECAST, {params: params, observe : "response"});
     }
 }

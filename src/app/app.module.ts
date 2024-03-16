@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { WeatherForecastsComponent } from './modules/weather-forecasts/weather-forecasts.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WeatherForecastService } from './shared/service/weather-forecast.service';
+import { GeoService } from './shared/service/geo.service';
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,9 +18,12 @@ import { WeatherForecastService } from './shared/service/weather-forecast.servic
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    InputTextModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [WeatherForecastService],
+  providers: [WeatherForecastService, GeoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
